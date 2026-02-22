@@ -1,0 +1,11 @@
+{
+  "name": "gtm-templates",
+  "version": "1.0.0",
+  "description": "GTM custom template development toolkit — scaffolding, sandboxed JS reference, permissions, testing, and QA review",
+  "author": {
+    "name": "Voxxy Creative Lab",
+    "url": "https://github.com/VoxxyCreativeLab"
+  },
+  "license": "MIT",
+  "keywords": ["gtm", "google-tag-manager", "templates", "analytics", "tracking"]
+}
