@@ -98,7 +98,7 @@ Each window property needs a map entry with `key`, `read`, `write`, and `execute
               ],
               "mapValue": [
                 {"type": 1, "string": "_myPropertyName"},
-                {"type": 8, "boolean": false},
+                {"type": 8, "boolean": true},
                 {"type": 8, "boolean": true},
                 {"type": 8, "boolean": false}
               ]
@@ -116,9 +116,11 @@ Each window property needs a map entry with `key`, `read`, `write`, and `execute
 ```
 
 **Flag meanings:**
-- `read: true` — needed for `copyFromWindow` or `createQueue`/`createArgumentsQueue`
+- `read: true` — needed for `copyFromWindow`, `createQueue`/`createArgumentsQueue`, or `setInWindow` with `overrideExisting: true`
 - `write: true` — needed for `setInWindow` or `createQueue`/`createArgumentsQueue`
 - `execute: true` — needed for `callInWindow`
+
+> **Important:** `setInWindow` with `overrideExisting: true` requires **both `read` and `write`**. GTM classifies this as a readwrite operation at runtime. Setting only `write: true` causes: `Prohibited readwrite on global variable`.
 
 **To add multiple properties**, add more map objects to the `listItem` array.
 

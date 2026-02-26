@@ -42,7 +42,11 @@ Read the template and identify these sections:
 - [ ] All `name` values are referenced in sandboxed JS as `data.<name>`
 - [ ] TEXT fields with required values have `valueValidators: [{type: "NON_EMPTY"}]`
 - [ ] CHECKBOX parameters have `simpleValueType: true`
-- [ ] GROUPs have appropriate `groupStyle` (NO_ZIPPY for essential, ZIPPY_CLOSED for advanced)
+- [ ] GROUPs have appropriate `groupStyle` (`ZIPPY_OPEN` for primary settings, `ZIPPY_CLOSED` for optional/advanced). `NO_ZIPPY` should only be used for subordinate/conditional groups shown via `enablingConditions` — never for top-level sections (content becomes invisible without a visual header/container)
+- [ ] No GROUP uses `"displayName": "Advanced Settings"` (clashes with Google's built-in section; use "Additional settings" instead)
+- [ ] No redundant LABEL params inside GROUPs — the GROUP `displayName` already serves as the section header
+- [ ] Global config params (like event name) are at the top level, not buried inside GROUPs
+- [ ] All `displayName` and `checkboxText` values use sentence case (capitalize first word only, except proper nouns)
 - [ ] Parameters have `help` tooltips
 
 #### Sandboxed JavaScript
@@ -58,6 +62,7 @@ Read the template and identify these sections:
 - [ ] Every `require()` call has a matching permission in `___WEB_PERMISSIONS___`
 - [ ] No unused permissions (declared but not used in code)
 - [ ] `access_globals` lists all window properties with correct read/write/execute flags
+- [ ] `access_globals` entries used by `setInWindow` with `overrideExisting: true` have **both** `read: true` and `write: true` (GTM requires readwrite for this operation)
 - [ ] `inject_script` URL patterns match the actual script URLs
 - [ ] `logging` uses `"debug"` environment (not `"all"`)
 - [ ] Type codes are correct: 1=String, 2=List, 3=Map, 8=Boolean
@@ -74,7 +79,7 @@ Read the template and identify these sections:
 - [ ] Uses `injectScript` pattern if template needs `addEventListener` or DOM access
 - [ ] Deduplication pattern if events can fire multiple times
 - [ ] Listener guard pattern if tag can fire on multiple triggers
-- [ ] Debug logging present (logToConsole with descriptive prefix)
+- [ ] Debug logging toggle present: `enableDebugLogging` checkbox in Additional Settings (default OFF), with `logToConsole` calls gated behind `if (data.enableDebugLogging)`
 - [ ] No hardcoded values that should be configurable parameters
 
 ### Step 4: Check Related Files

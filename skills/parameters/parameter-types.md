@@ -33,7 +33,7 @@
 | `help` | string | All | Tooltip text shown on hover (?) icon |
 | `valueValidators` | array | TEXT, PARAGRAPH | Validation rules array |
 | `enablingConditions` | array | All (except GROUP) | Show/hide based on other parameter values |
-| `groupStyle` | string | GROUP only | `"NO_ZIPPY"` (always open) or `"ZIPPY_CLOSED"` (collapsed) |
+| `groupStyle` | string | GROUP only | `"ZIPPY_OPEN"` (expanded, collapsible), `"ZIPPY_CLOSED"` (collapsed), or `"NO_ZIPPY"` (flat, no header) |
 | `subParams` | array | GROUP only | Nested parameters inside the group |
 | `checkboxText` | string | CHECKBOX only | Label next to the checkbox (instead of displayName) |
 | `selectItems` | array | SELECT only | Dropdown options |
@@ -64,7 +64,7 @@ Single-line text input.
 {
   "type": "TEXT",
   "name": "dataLayerEventName",
-  "displayName": "DataLayer Event Name",
+  "displayName": "DataLayer event name",
   "simpleValueType": true,
   "defaultValue": "my_event",
   "help": "The event name pushed to the dataLayer.",
@@ -166,24 +166,25 @@ Container for organizing related parameters.
 {
   "type": "GROUP",
   "name": "eventSettings",
-  "displayName": "Event Settings",
-  "groupStyle": "NO_ZIPPY",
+  "displayName": "Events to track",
+  "groupStyle": "ZIPPY_OPEN",
   "subParams": [
     {
-      "type": "TEXT",
-      "name": "eventName",
-      "displayName": "Event Name",
+      "type": "CHECKBOX",
+      "name": "trackPageView",
+      "checkboxText": "Page view",
       "simpleValueType": true,
-      "defaultValue": "my_event"
+      "defaultValue": true,
+      "help": "Fires when a user views a page."
     }
   ]
 }
 ```
 
 **Group styles:**
-- `"NO_ZIPPY"` — Always expanded, no collapse button. Use for primary settings.
+- `"ZIPPY_OPEN"` — Expanded by default, can be collapsed. **Use for primary settings.** Renders a visible section header bar with expand/collapse toggle and a bordered container. This is the recommended default for top-level groups.
 - `"ZIPPY_CLOSED"` — Collapsed by default, click to expand. Use for advanced/optional settings.
-- `"ZIPPY_OPEN"` — Expanded by default, can be collapsed.
+- `"NO_ZIPPY"` — Always expanded, no collapse button, no header bar, no visual container. **Only use for subordinate/conditional groups** shown via `enablingConditions`. When used at the top level, subParams can become invisible in GTM's UI because there is no visual boundary or header to distinguish them from surrounding content.
 
 ### SIMPLE_TABLE
 
@@ -282,24 +283,19 @@ Show/hide parameters based on other parameter values. The parameter is only visi
 
 ### Pattern: Event Selection with Checkboxes
 
-Allow users to pick which events to track:
+Allow users to pick which events to track. Use `ZIPPY_OPEN` so the group has a visible header and bordered container. Do not add a LABEL inside the group — the group's `displayName` already serves as the section header.
 
 ```json
 {
   "type": "GROUP",
   "name": "eventsToTrack",
-  "displayName": "Events to Track",
-  "groupStyle": "NO_ZIPPY",
+  "displayName": "Events to track",
+  "groupStyle": "ZIPPY_OPEN",
   "subParams": [
-    {
-      "type": "LABEL",
-      "name": "eventsLabel",
-      "displayName": "Select which events to track:"
-    },
     {
       "type": "CHECKBOX",
       "name": "trackEvent1",
-      "checkboxText": "Event Name 1",
+      "checkboxText": "Event name 1",
       "simpleValueType": true,
       "defaultValue": true,
       "help": "Description of event 1."
@@ -307,7 +303,7 @@ Allow users to pick which events to track:
     {
       "type": "CHECKBOX",
       "name": "trackEvent2",
-      "checkboxText": "Event Name 2",
+      "checkboxText": "Event name 2",
       "simpleValueType": true,
       "defaultValue": true,
       "help": "Description of event 2."
@@ -323,28 +319,39 @@ if (data.trackEvent1) allowedEvents.event1 = true;
 if (data.trackEvent2) allowedEvents.event2 = true;
 ```
 
-### Pattern: Basic + Advanced Settings
+### Pattern: Basic + Additional Settings
 
-Essential settings visible, advanced collapsed:
+Essential settings visible in a `ZIPPY_OPEN` group, additional collapsed. Global config fields like event name can sit at the top level (outside any group) for immediate visibility.
 
 ```json
 [
   {
+    "type": "TEXT",
+    "name": "eventName",
+    "displayName": "Event name",
+    "simpleValueType": true,
+    "defaultValue": "my_event"
+  },
+  {
     "type": "GROUP",
     "name": "basicSettings",
     "displayName": "Settings",
-    "groupStyle": "NO_ZIPPY",
+    "groupStyle": "ZIPPY_OPEN",
     "subParams": [...]
   },
   {
     "type": "GROUP",
-    "name": "advancedSettings",
-    "displayName": "Advanced Settings",
+    "name": "additionalSettings",
+    "displayName": "Additional settings",
     "groupStyle": "ZIPPY_CLOSED",
     "subParams": [...]
   }
 ]
 ```
+
+> **Do NOT use "Advanced Settings" as the displayName.** Google's tag UI adds its own built-in "Advanced Settings" section to every tag, so using that name creates a confusing duplicate.
+
+> **Use sentence case for all labels.** Per Google's GTM template style guide: capitalize the first word only, except for proper nouns. Example: "Additional settings", not "Additional Settings".
 
 ### Pattern: Conditional Fields
 

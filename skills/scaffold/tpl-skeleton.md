@@ -57,10 +57,19 @@ ___TEMPLATE_PARAMETERS___
   },
   {
     "type": "GROUP",
-    "name": "advancedSettings",
-    "displayName": "Advanced Settings",
+    "name": "additionalSettings",
+    "displayName": "Additional Settings",
     "groupStyle": "ZIPPY_CLOSED",
-    "subParams": []
+    "subParams": [
+      {
+        "type": "CHECKBOX",
+        "name": "enableDebugLogging",
+        "checkboxText": "Enable debug logging in browser console",
+        "simpleValueType": true,
+        "defaultValue": false,
+        "help": "When enabled, logs detailed tracking information to the browser console. Useful for verifying which events are being captured and troubleshooting. Disable in production."
+      }
+    ]
   }
 ]
 
@@ -72,6 +81,11 @@ const logToConsole = require('logToConsole');
 
 // Read template parameter values
 const dataLayerEventName = data.dataLayerEventName || '[default_event_name]';
+
+// Debug logging helper
+if (data.enableDebugLogging) {
+  logToConsole('[TemplateName] Initializing with event name: ' + dataLayerEventName);
+}
 
 // TODO: Implement template logic
 
@@ -112,7 +126,8 @@ scenarios:
 - name: Basic test - tag executes successfully
   code: |-
     const mockData = {
-      dataLayerEventName: '[default_event_name]'
+      dataLayerEventName: '[default_event_name]',
+      enableDebugLogging: false
     };
 
     runCode(mockData);

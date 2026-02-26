@@ -21,8 +21,8 @@ You have access to a comprehensive API reference for all GTM sandboxed JavaScrip
 - No `setTimeout` — use `callLater()` instead
 - No `Promise`, `async/await`, `new`, `this`, `eval`
 - ECMAScript 5.1 with select ES6 (arrow functions, `const`, `let`)
-- All APIs loaded via `require('apiName')`
-- Each API needs a matching permission in `___WEB_PERMISSIONS___`
+- All APIs loaded via `require('apiName')` — there are NO global built-ins
+- Most APIs need a matching permission in `___WEB_PERMISSIONS___`, but utility APIs (`makeNumber`, `makeString`, `makeInteger`, `getType`, `JSON`, `Math`, etc.) need `require()` without a permission entry
 
 ## The injectScript Pattern
 

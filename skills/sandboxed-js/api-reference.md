@@ -138,7 +138,17 @@ const logToConsole = require('logToConsole');
 const setInWindow = require('setInWindow');
 const getUrl = require('getUrl');
 const JSON = require('JSON');
+const makeNumber = require('makeNumber');
+const makeString = require('makeString');
+const makeInteger = require('makeInteger');
+const getType = require('getType');
 ```
+
+> **WARNING — `require()` is needed for ALL APIs, including utility APIs.**
+> There are NO global built-ins in GTM sandboxed JS. Even utility and type-conversion APIs that do not need a `___WEB_PERMISSIONS___` entry must still be loaded via `require()`. Skipping it causes an "Attempting to use undeclared variable" error at runtime.
+>
+> Common APIs that trip people up (no permission needed, but `require()` is mandatory):
+> `makeNumber`, `makeString`, `makeInteger`, `getType`, `makeTableMap`, `JSON`, `Math`, `generateRandom`, `getTimestampMillis`
 
 ---
 
@@ -186,7 +196,7 @@ setInWindow(key: string, value: *, overrideExisting: boolean) => boolean
 
 **What it does:** Sets a value on the `window` object at the specified path. Returns `true` if the value was set successfully, `false` if the key already existed and `overrideExisting` was `false`.
 
-**Permission:** `access_globals` -- the key must have `write` enabled.
+**Permission:** `access_globals` -- the key must have `write` enabled. When `overrideExisting` is `true`, the key must have **both `read` and `write`** enabled (GTM classifies this as a readwrite operation).
 
 ```javascript
 const setInWindow = require('setInWindow');

@@ -28,6 +28,7 @@ When asked to **validate permissions**:
 
 - Every sandboxed API loaded via `require()` needs a corresponding permission block (except `JSON`, `Math`, `Object`, encoding/decoding APIs, type conversion APIs, and other permission-free APIs)
 - The `access_globals` permission must list every window property the template reads, writes, or executes
+- `setInWindow` with `overrideExisting: true` requires both `read: true` and `write: true` — GTM classifies this as a readwrite operation at runtime
 - URL patterns in `inject_script` and `send_pixel` should use wildcards where appropriate
 - `logging` should almost always use `"debug"` environment (not `"all"`)
 - Permission type codes: `1` = String, `2` = List, `3` = Map, `8` = Boolean
