@@ -223,7 +223,7 @@ Verify the correct script URL is used:
     });
 
     runCode({dataLayerEventName: 'test'});
-    assertThat(injectedUrl).isEqualTo('https://cdn.jsdelivr.net/gh/MyOrg/cdn@1.0.0/my-script.js');
+    assertThat(injectedUrl).isEqualTo('https://cdn.jsdelivr.net/gh/MyOrg/cdn@1/my-script.js');
 ```
 
 ### Pattern 6: Pixel/sendPixel Test

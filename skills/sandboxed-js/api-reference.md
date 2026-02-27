@@ -173,7 +173,7 @@ injectScript(url: string, onSuccess: function, onFailure: function [, cacheToken
 
 ```javascript
 const injectScript = require('injectScript');
-const scriptUrl = 'https://cdn.jsdelivr.net/gh/example/lib@1.0.0/tracker.js';
+const scriptUrl = 'https://cdn.jsdelivr.net/gh/example/lib@1/tracker.js';
 
 injectScript(scriptUrl, data.gtmOnSuccess, data.gtmOnFailure, 'myTracker');
 ```
