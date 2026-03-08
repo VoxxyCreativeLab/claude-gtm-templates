@@ -32,3 +32,26 @@ When the template needs to do things sandboxed JS cannot (like `addEventListener
 2. **Helper script** (external, hosted on CDN): Read `window._configName` → use full browser APIs → push to `dataLayer`
 
 This is the same pattern used by Google's official Web Vitals GTM template.
+
+## CDN Hosting Rules (jsDelivr)
+
+When hosting helper scripts, config files, or other assets on jsDelivr via GitHub:
+
+### One product per repo — MANDATORY
+jsDelivr has **one flat version namespace per GitHub repo**. All git tags are global — there is no per-directory or per-product scoping. If multiple products share a repo, their tags collide and `@v1`-style version ranges break.
+
+**NEVER put multiple products in a shared CDN repo.** Each product that needs independent versioning MUST have its own dedicated GitHub repo.
+
+```
+WRONG:  VoxxyCreativeLab/cdn → calendly/, wistia/, como-banner/  (tags collide)
+RIGHT:  VoxxyCreativeLab/cdn-calendly    → calendly-listener.js
+        VoxxyCreativeLab/cdn-wistia      → wistia-listener.js
+        VoxxyCreativeLab/cdn-como-banner → como-global.json, vcl-como-banner.js
+```
+
+### Version tagging rules
+- **Always use `v` prefix:** `v1.0.0`, `v1.1.0` (jsDelivr strips the single `v` for semver matching)
+- **Use `@v1` (major only) in CDN URLs** — auto-resolves to latest `v1.x.x` tag
+- **Never delete+recreate tags** — jsDelivr caches permanently. Bump the version instead.
+- **Never use `@main`** — 12h cache, purge API unreliable
+- **Tag prefixes like `product-v1.0.0` do NOT work** — jsDelivr only strips one `v`, the rest becomes invalid semver

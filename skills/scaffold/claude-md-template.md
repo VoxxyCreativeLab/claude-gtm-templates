@@ -47,6 +47,14 @@ https://github.com/VoxxyCreativeLab/template-[name]
 ### Permissions Required
 [List permissions and what they're for]
 
+## CDN Hosting (if using injectScript)
+If this template loads a helper script or config from jsDelivr CDN:
+- **Dedicated repo per product** — e.g. `VoxxyCreativeLab/cdn-[product-name]`. NEVER share a CDN repo with other products (jsDelivr has one flat version namespace per repo — tags collide).
+- **Use `@v1` (major version)** in CDN URLs — auto-resolves to latest `v1.x.x` tag
+- **Always use `v` prefix** on tags: `v1.0.0`, `v1.1.0`, etc.
+- **Never delete+recreate tags** — jsDelivr caches permanently. Bump version instead.
+- **Never use `@main`** — 12h cache, purge API unreliable
+
 ## Development Guidelines
 - Template logic is in `template.tpl` using GTM sandboxed JS APIs only
 - The `.tpl` format has specific sections: `___INFO___`, `___TEMPLATE_PARAMETERS___`, `___SANDBOXED_JS_FOR_WEB_TEMPLATE___`, `___WEB_PERMISSIONS___`, `___TESTS___`, `___NOTES___`
