@@ -54,6 +54,7 @@ Read the template and identify these sections:
 - [ ] `data.gtmOnSuccess()` is called on the success path
 - [ ] `data.gtmOnFailure()` is called on the failure path (if using injectScript/sendPixel)
 - [ ] No forbidden patterns: `eval`, `Function()`, `new`, `this`, direct `window`/`document` access
+- [ ] No `try`/`catch`/`finally` blocks (unsupported — sandboxed APIs return `undefined` on error, they don't throw)
 - [ ] If using `injectScript`: `cacheToken` parameter is provided (prevents duplicate loading)
 - [ ] If using `setInWindow`: config object name follows `_[templateName]Config` convention
 - [ ] Default values handled: `data.paramName || 'default'`

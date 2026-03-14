@@ -178,6 +178,21 @@ const scriptUrl = 'https://cdn.jsdelivr.net/gh/example/lib@1/tracker.js';
 injectScript(scriptUrl, data.gtmOnSuccess, data.gtmOnFailure, 'myTracker');
 ```
 
+### CDN Hosting Rules (jsDelivr)
+
+When using `injectScript` to load scripts from jsDelivr CDN, these rules are **mandatory**:
+
+| Rule | Detail |
+|------|--------|
+| **One repo per product** | jsDelivr has one flat version namespace per repo. Multiple products in one repo cause tag collisions. Use `cdn-[product-name]` repos. |
+| **Use `@v1` (major version) in URLs** | Auto-resolves to latest `v1.x.x` tag. Clients receive minor/patch updates automatically. |
+| **Every push MUST be tagged** | Pushing to `main` without a semver tag does NOTHING. `@v1` only resolves to tagged commits. Always: `git tag v1.0.X && git push origin v1.0.X` |
+| **Never delete+recreate tags** | jsDelivr caches tags permanently. Deleted tags remain cached. Always bump to a new version. |
+| **Never use `@main`** | Branch resolution has a separate 12h cache that the purge API does NOT clear. |
+| **Version-range cache: up to 12h** | After pushing a new tag, the `@v1` alias may take up to 12h to resolve to it. The purge API only clears file cache, not version-range cache. |
+| **NEVER change `@v1` to `@v2` in a deployed template** | This breaks ALL existing GTM containers. A major version bump requires every client to delete the old template, re-import the new `.tpl`, and re-publish. |
+| **Backward compat within major version** | A template deployed at v1.0.0 auto-receives v1.8.6 via `@v1`. All v1.x changes MUST be backward-compatible. |
+
 ---
 
 ## Window Access
@@ -1608,6 +1623,7 @@ This section documents the permission keys used in the `___WEB_PERMISSIONS___` s
 | No `Promise` / async-await       | Asynchronous operations use callbacks only                                  |
 | No DOM manipulation              | Cannot create, modify, or query DOM elements                                |
 | No `eval` / `Function()`         | Dynamic code execution is blocked                                           |
+| No `try`/`catch`/`finally`       | Error handling via return values (`undefined`/`null`), not exceptions. Sandboxed APIs never throw. |
 | No `XMLHttpRequest` / `fetch`    | Use `sendPixel` for GET requests or `injectScript` for script loading       |
 | No native string/array methods   | Some native prototype methods are removed; use sandboxed equivalents        |
 | Limited type system               | Only supports: `null`, `undefined`, `string`, `number`, `boolean`, `array`, `object`, `function` |

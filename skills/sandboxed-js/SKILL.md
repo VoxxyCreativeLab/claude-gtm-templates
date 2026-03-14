@@ -19,6 +19,7 @@ You have access to a comprehensive API reference for all GTM sandboxed JavaScrip
 - No direct `window`, `document`, or DOM access
 - No `addEventListener` — use the `injectScript` pattern for event listeners
 - No `setTimeout` — use `callLater()` instead
+- No `try`/`catch`/`finally` — sandboxed APIs return `undefined` on error instead of throwing
 - No `Promise`, `async/await`, `new`, `this`, `eval`
 - ECMAScript 5.1 with select ES6 (arrow functions, `const`, `let`)
 - All APIs loaded via `require('apiName')` — there are NO global built-ins
