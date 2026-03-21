@@ -89,6 +89,12 @@ Read the template and identify these sections:
 - [ ] `README.md` exists with installation instructions
 - [ ] If using injectScript pattern: verify the external script URL is accessible
 
+#### CDN Sync State (if project uses injectScript + separate CDN repo)
+- [ ] CDN repo has sequential tags (no gaps, no duplicates on same commit)
+- [ ] Latest CDN tag points to the most recent commit on CDN repo main branch
+- [ ] CHANGELOG has a CDN Sync Log mapping source versions to CDN tags
+- [ ] No memory files or project state files contain hardcoded CDN tag numbers
+
 ### Step 5: Produce Report
 
 Output a structured report with:

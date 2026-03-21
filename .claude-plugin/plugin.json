@@ -1,5 +1,5 @@
 {
-  "name": "gtm-templates",
+  "name": "gtm-template-builder-plugin",
   "version": "1.0.0",
   "description": "GTM custom template development toolkit — scaffolding, sandboxed JS reference, permissions, testing, and QA review",
   "author": {

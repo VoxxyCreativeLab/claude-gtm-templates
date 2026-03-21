@@ -62,6 +62,13 @@ If this template loads a helper script or config from jsDelivr CDN:
 - **Backward compatibility within a major version is guaranteed by design.** A template deployed at v1.0.0 automatically receives v1.8.6 code via `@v1`. All changes within v1.x MUST be backward-compatible.
 - **NEVER change `@v1` to `@v2` in a deployed template.** This breaks ALL existing GTM containers using that template. A major version bump requires every client to: (1) delete the old template, (2) re-import the new `.tpl` file, (3) re-publish their GTM container. Treat major version bumps as a migration event, not a simple update.
 
+### Multi-repo sync (if using a separate CDN repo)
+If this project edits code in a source repo and mirrors it to a separate CDN repo:
+- **CDN tags are independent from source repo versions.** Never copy source version numbers to CDN tags.
+- **Always derive the next CDN tag from `git tag` on the CDN repo**, not from CHANGELOG or memory.
+- **Log every sync/skip in a CDN Sync Log** at the bottom of CHANGELOG.md.
+- **Never store CDN tag numbers in memory files** — they go stale between sessions.
+
 ## Development Guidelines
 - Template logic is in `template.tpl` using GTM sandboxed JS APIs only
 - The `.tpl` format has specific sections: `___INFO___`, `___TEMPLATE_PARAMETERS___`, `___SANDBOXED_JS_FOR_WEB_TEMPLATE___`, `___WEB_PERMISSIONS___`, `___TESTS___`, `___NOTES___`

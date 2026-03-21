@@ -1,5 +1,5 @@
 {
-  "name": "voxxy-gtm-tools",
+  "name": "gtm-template-builder-plugin",
   "description": "Claude Code plugins for Google Tag Manager custom template development",
   "owner": {
     "name": "Voxxy Creative Lab",
@@ -7,7 +7,7 @@
   },
   "plugins": [
     {
-      "name": "gtm-templates",
+      "name": "gtm-template-builder-plugin",
       "source": "./",
       "description": "GTM custom template development toolkit — scaffolding, sandboxed JS reference, permissions, testing, and QA review"
     }

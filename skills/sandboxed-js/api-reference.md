@@ -192,6 +192,9 @@ When using `injectScript` to load scripts from jsDelivr CDN, these rules are **m
 | **Version-range cache: up to 12h** | After pushing a new tag, the `@v1` alias may take up to 12h to resolve to it. The purge API only clears file cache, not version-range cache. |
 | **NEVER change `@v1` to `@v2` in a deployed template** | This breaks ALL existing GTM containers. A major version bump requires every client to delete the old template, re-import the new `.tpl`, and re-publish. |
 | **Backward compat within major version** | A template deployed at v1.0.0 auto-receives v1.8.6 via `@v1`. All v1.x changes MUST be backward-compatible. |
+| **Multi-repo: independent version sequences** | If using a separate CDN repo, its tags are independent from the source repo. NEVER derive CDN tags from source CHANGELOG versions. Always: `git fetch --tags && git tag -l "v1.*" \| sort -V \| tail -1` on the CDN repo. |
+| **Multi-repo: log every sync decision** | Keep a CDN Sync Log mapping source versions to CDN tags. Docs-only source commits get "—" for CDN tag. This prevents future sessions from guessing. |
+| **Never cache version state** | Do not store CDN tag numbers in memory files or session state. They go stale between sessions. Always verify from git. |
 
 ---
 
