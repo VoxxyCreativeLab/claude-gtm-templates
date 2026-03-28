@@ -3,7 +3,6 @@ name: scaffold
 description: Scaffold a new GTM custom template project with .tpl, metadata.yaml, CLAUDE.md, and README
 argument-hint: "[template-name]"
 disable-model-invocation: true
-allowed-tools: "Read, Write, Bash, Glob"
 ---
 
 # Scaffold a New GTM Custom Template Project

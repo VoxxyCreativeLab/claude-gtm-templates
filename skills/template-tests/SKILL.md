@@ -2,7 +2,6 @@
 name: template-tests
 description: Write and validate GTM template test scenarios using mock, runCode, assertApi, and assertThat. Use when building or reviewing the ___TESTS___ section of a .tpl file.
 disable-model-invocation: false
-allowed-tools: "Read, Edit, Grep"
 ---
 
 # GTM Template Tests
@@ -27,3 +26,4 @@ Consult [test-examples.md](test-examples.md) for test format, API reference, and
 - Not calling `onSuccess()` in the `injectScript` mock (gtmOnSuccess never fires)
 - Asserting on `gtmOnSuccess` before it could have been called
 - Using incorrect mock data key names (must match `name` in `___TEMPLATE_PARAMETERS___`)
+- **Using `//` comments between test scenarios** — the `___TESTS___` section is YAML, not JavaScript. Lines like `// @marker:value` at root indentation become YAML mapping keys, breaking the `scenarios:` list and causing "Error importing file". Use `# comment` (YAML comment) for anything outside `code: |-` blocks

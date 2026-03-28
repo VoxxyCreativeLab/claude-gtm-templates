@@ -2,7 +2,6 @@
 name: permissions
 description: Generate and validate GTM template WEB_PERMISSIONS JSON blocks for sandboxed JS APIs. Use when building or reviewing the ___WEB_PERMISSIONS___ section of a .tpl file.
 disable-model-invocation: false
-allowed-tools: "Read, Edit, Grep"
 ---
 
 # GTM Template Permissions

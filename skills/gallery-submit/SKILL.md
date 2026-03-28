@@ -2,7 +2,6 @@
 name: gallery-submit
 description: Prepare a GTM custom template for Community Template Gallery submission. Validates metadata.yaml, template structure, and Gallery requirements.
 disable-model-invocation: true
-allowed-tools: "Read, Bash, Grep, Glob"
 ---
 
 # Prepare for GTM Community Template Gallery Submission
