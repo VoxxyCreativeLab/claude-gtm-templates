@@ -1,5 +1,5 @@
 ---
-name: scaffold
+name: scaffold-template
 description: Scaffold a new GTM custom template project with .tpl, metadata.yaml, CLAUDE.md, and README
 argument-hint: "[template-name]"
 disable-model-invocation: false
