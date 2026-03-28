@@ -75,6 +75,7 @@ Read the template and identify these sections:
 - [ ] Config object construction is verified (capture setInWindow and assert values)
 - [ ] Different parameter combinations are tested
 - [ ] Mock data key names match parameter `name` fields exactly
+- [ ] No `//` comments at root level in `___TESTS___` section — the section is YAML, so only `# comment` syntax is valid outside `code: |-` blocks. JavaScript `//` comments at column 0 are parsed as YAML mapping keys, breaking the `scenarios:` list and causing "Error importing file" on GTM import
 
 #### Best Practices
 - [ ] Uses `injectScript` pattern if template needs `addEventListener` or DOM access
@@ -94,6 +95,16 @@ Read the template and identify these sections:
 - [ ] Latest CDN tag points to the most recent commit on CDN repo main branch
 - [ ] CHANGELOG has a CDN Sync Log mapping source versions to CDN tags
 - [ ] No memory files or project state files contain hardcoded CDN tag numbers
+- [ ] Every CDN asset URL referenced in source code (e.g. `cdn.jsdelivr.net/gh/.../assets/logo.svg`) has a matching file that is **committed** (not untracked) in the CDN repo
+- [ ] `git status` on CDN repo shows no untracked files that should be committed
+
+#### Documentation Currency (if project has CONTEXT.md / tier-design / architecture docs)
+- [ ] All CONTEXT.md files reference current behavior (badge rendering, variable names, tier differences)
+- [ ] If template has tier markers (`@begin:` / `@end:`) → tier-specific documentation matches current strip/keep rules
+- [ ] If a build script generates derived templates → derived templates were regenerated after master template changed
+- [ ] CHANGELOG.md reflects current changes
+- [ ] Variable tables in documentation list all window variables actually set by the template (no missing entries)
+- [ ] Architecture and design spec files match the actual implementation (filter logic, rendering logic, fallback behavior)
 
 ### Step 5: Produce Report
 

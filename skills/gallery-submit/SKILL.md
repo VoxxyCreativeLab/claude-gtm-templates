@@ -1,7 +1,7 @@
 ---
 name: gallery-submit
 description: Prepare a GTM custom template for Community Template Gallery submission. Validates metadata.yaml, template structure, and Gallery requirements.
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 
 # Prepare for GTM Community Template Gallery Submission
