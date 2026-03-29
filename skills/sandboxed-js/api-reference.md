@@ -1,3 +1,11 @@
+---
+title: Sandboxed JavaScript API Reference
+date: 2026-03-28
+tags:
+  - reference
+  - gtm
+---
+
 # Google Tag Manager - Sandboxed JavaScript API Reference
 
 > Complete reference for all APIs available in GTM Custom Template sandboxed JavaScript.

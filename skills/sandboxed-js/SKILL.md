@@ -6,7 +6,7 @@ disable-model-invocation: false
 
 # GTM Sandboxed JavaScript Reference
 
-You have access to a comprehensive API reference for all GTM sandboxed JavaScript APIs. Consult [api-reference.md](api-reference.md) for:
+You have access to a comprehensive API reference for all GTM sandboxed JavaScript APIs. Consult [[api-reference]] for:
 
 - All available APIs with signatures, parameters, and examples
 - Permission requirements for each API

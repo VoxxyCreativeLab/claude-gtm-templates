@@ -8,7 +8,7 @@ disable-model-invocation: false
 
 You are helping design the `___TEMPLATE_PARAMETERS___` section of a GTM custom template `.tpl` file. This section defines the UI that users see when configuring a tag in GTM.
 
-Consult [parameter-types.md](parameter-types.md) for the complete reference of all parameter types, properties, validators, and UI patterns.
+Consult [[parameter-types]] for the complete reference of all parameter types, properties, validators, and UI patterns.
 
 ## Key Principles
 

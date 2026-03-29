@@ -1,3 +1,11 @@
+---
+title: Parameter Types
+date: 2026-03-28
+tags:
+  - reference
+  - gtm
+---
+
 # GTM Template Parameter Types Reference
 
 ## Parameter Types Overview

@@ -1,3 +1,10 @@
+---
+title: GTM Template Builder Plugin
+date: 2026-03-28
+tags:
+  - mwp
+---
+
 # GTM Template Builder Plugin — Claude Code Plugin
 
 A Claude Code plugin for building Google Tag Manager custom templates. Provides scaffolding, sandboxed JS API reference, permission generation, parameter design, test writing, and QA review.

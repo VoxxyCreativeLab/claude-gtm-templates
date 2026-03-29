@@ -8,7 +8,7 @@ disable-model-invocation: false
 
 You are helping prepare a GTM custom template for submission to the [Community Template Gallery](https://tagmanager.google.com/gallery/).
 
-Consult [metadata-yaml.md](metadata-yaml.md) for the metadata.yaml format.
+Consult [[metadata-yaml]] for the metadata.yaml format.
 
 ## Pre-Submission Checklist
 

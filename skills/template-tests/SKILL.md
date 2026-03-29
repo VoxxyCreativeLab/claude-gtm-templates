@@ -8,7 +8,7 @@ disable-model-invocation: false
 
 You are helping write or validate the `___TESTS___` section of a GTM custom template `.tpl` file.
 
-Consult [test-examples.md](test-examples.md) for test format, API reference, and common patterns.
+Consult [[test-examples]] for test format, API reference, and common patterns.
 
 ## Test Writing Guidelines
 

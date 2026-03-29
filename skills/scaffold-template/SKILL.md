@@ -20,7 +20,7 @@ You are creating a new GTM (Google Tag Manager) custom template project. The tem
 2. **Create the project directory** with these files:
 
 ### `template.tpl`
-Use the skeleton from [tpl-skeleton.md](tpl-skeleton.md). Fill in:
+Use the skeleton from [[tpl-skeleton]]. Fill in:
 - `___INFO___`: Set displayName, description, categories, brand (Voxxy Creative Lab)
 - `___TEMPLATE_PARAMETERS___`: Based on user's answers — at minimum a dataLayer event name TEXT field and event selection CHECKBOXes
 - `___SANDBOXED_JS_FOR_WEB_TEMPLATE___`: Stub with require() calls, data reading, and either injectScript or direct logic
@@ -36,7 +36,7 @@ versions: []
 ```
 
 ### `CLAUDE.md`
-Use the template from [claude-md-template.md](claude-md-template.md). Fill in project-specific details.
+Use the template from [[claude-md-template]]. Fill in project-specific details.
 
 ### `README.md`
 Create a user-facing README with:

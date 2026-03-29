@@ -13,7 +13,7 @@ You are helping with the `___WEB_PERMISSIONS___` section of a GTM custom templat
 When asked to **generate permissions**:
 1. Read the `___SANDBOXED_JS_FOR_WEB_TEMPLATE___` section
 2. Identify every `require()` call
-3. For each API, generate the correct permission JSON block from [permissions-reference.md](permissions-reference.md)
+3. For each API, generate the correct permission JSON block from [[permissions-reference]]
 4. Combine all blocks into a JSON array
 
 When asked to **validate permissions**:
@@ -32,4 +32,4 @@ When asked to **validate permissions**:
 - `logging` should almost always use `"debug"` environment (not `"all"`)
 - Permission type codes: `1` = String, `2` = List, `3` = Map, `8` = Boolean
 
-Consult [permissions-reference.md](permissions-reference.md) for the exact JSON structure of each permission type.
+Consult [[permissions-reference]] for the exact JSON structure of each permission type.

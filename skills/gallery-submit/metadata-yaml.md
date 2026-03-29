@@ -1,3 +1,11 @@
+---
+title: Metadata YAML Reference
+date: 2026-03-28
+tags:
+  - reference
+  - gtm
+---
+
 # metadata.yaml Format Reference
 
 ## Purpose

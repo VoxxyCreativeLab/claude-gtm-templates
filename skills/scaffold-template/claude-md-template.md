@@ -1,3 +1,11 @@
+---
+title: CLAUDE.md Template
+date: 2026-03-28
+tags:
+  - reference
+  - gtm
+---
+
 # CLAUDE.md Template for GTM Template Projects
 
 Use this as the starting point for the project's `CLAUDE.md`. Fill in all `[PLACEHOLDER]` values.

@@ -1,3 +1,11 @@
+---
+title: TPL Skeleton
+date: 2026-03-28
+tags:
+  - reference
+  - gtm
+---
+
 # GTM Template Skeleton (.tpl)
 
 Use this skeleton when scaffolding a new GTM custom template. Replace all `[PLACEHOLDER]` values.

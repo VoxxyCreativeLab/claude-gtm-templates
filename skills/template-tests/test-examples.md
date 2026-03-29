@@ -1,3 +1,11 @@
+---
+title: GTM Template Test Reference
+date: 2026-03-28
+tags:
+  - reference
+  - gtm
+---
+
 # GTM Template Test Reference & Examples
 
 ## Test Format
@@ -15,7 +23,8 @@ scenarios:
     assertApi('apiName').wasCalled();
 ```
 
-> **CRITICAL — YAML comment syntax only:** Any non-test content in the `___TESTS___` section (markers, annotations, build directives) MUST use YAML comments (`# comment`), NOT JavaScript comments (`// comment`). GTM parses this section as YAML — a `// something:value` line at root indentation is interpreted as a YAML mapping key, breaking the `scenarios:` list structure and causing "Error importing file" on import. JavaScript `//` comments are only valid INSIDE `code: |-` blocks. For tier markers or build annotations between test scenarios, always use `# @marker` format.
+> [!danger] YAML comment syntax only
+> Any non-test content in the `___TESTS___` section (markers, annotations, build directives) MUST use YAML comments (`# comment`), NOT JavaScript comments (`// comment`). GTM parses this section as YAML — a `// something:value` line at root indentation is interpreted as a YAML mapping key, breaking the `scenarios:` list structure and causing "Error importing file" on import. JavaScript `//` comments are only valid INSIDE `code: |-` blocks. For tier markers or build annotations between test scenarios, always use `# @marker` format.
 
 ## Test APIs
 
