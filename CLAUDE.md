@@ -7,54 +7,21 @@ tags:
 
 # GTM Template Builder Plugin
 
-%% LAYER 0 — GLOBAL IDENTITY %%
+A Claude Code plugin providing a complete toolkit for authoring GTM custom templates — scaffolding, sandboxed JS API reference, permission generation, parameter design, test writing, and Gallery submission prep.
 
-## What This Is
+## Who You Are Helping
 
-A Claude Code plugin that provides a complete toolkit for authoring GTM custom templates — including project scaffolding, sandboxed JS API reference, permission block generation, parameter UI design, test writing, and Community Template Gallery submission prep.
+A tracking specialist with deep GTM/sGTM expertise, building and maintaining Claude Code plugins for the GTM template development workflow.
 
-This workspace follows MWP (Model Workspace Protocol) conventions. Plain markdown files carry context. Skills and agents are organized in functional directories.
+## Permanent Rules
 
----
+- Each skill directory contains a `SKILL.md` (entry point) and supporting reference files
+- Agent definitions live in `agents/` as standalone markdown files
+- Layer 3 reference files in `_config/` are stable — do not overwrite during a run
+- Plugin configuration in `.claude-plugin/` must stay in sync with README.md skill table
+- No stale commits allowed
 
-## Folder Structure
-
-```
-gtm-template-builder-plugin/
-  CLAUDE.md             ← You are here. Global identity.
-  CONTEXT.md            ← Task routing. Where to go for what.
-  README.md             ← Human-facing plugin overview + installation
-  START-HERE.md         ← Quick-start guide
-  PLAN.md               ← Project roadmap
-  _config/              ← Layer 3: Stable reference files
-  .claude-plugin/       ← Plugin configuration (marketplace.json, plugin.json)
-  skills/               ← Skill definitions (6 skills)
-    gallery-submit/
-    parameters/
-    permissions/
-    sandboxed-js/
-    scaffold-template/
-    template-tests/
-  agents/               ← Agent definitions (template-reviewer)
-```
-
----
-
-## Quick Navigation
-
-| I want to... | Go here |
-|---|---|
-| Understand a skill | Read its `SKILL.md` in `skills/[skill-name]/` |
-| Review the template reviewer agent | [[agents/template-reviewer]] |
-| See all available skills | [[skills/CONTEXT]] |
-| See all available agents | [[agents/CONTEXT]] |
-| Adjust conventions | [[_config/conventions]] |
-| Check technical standards | [[_config/tech-standards]] |
-| See what's in progress | [[PLAN]] |
-
----
-
-## Active Plugins & Domain Tools
+## Companion Tools
 
 | Plugin / Tool | Relationship |
 |---|---|
@@ -64,11 +31,14 @@ gtm-template-builder-plugin/
 > [!info] Ecosystem
 > See [[_config/ecosystem]] for the full list of available plugins, CLIs, and MCPs.
 
----
+## Root Files
 
-## Rules That Apply Everywhere
-
-- Each skill directory contains a `SKILL.md` (entry point) and supporting reference files
-- Agent definitions live in `agents/` as standalone markdown files
-- Layer 3 reference files in `_config/` are stable — do not overwrite during a run
-- Plugin configuration in `.claude-plugin/` must stay in sync with README.md skill table
+| File | Role |
+|------|------|
+| `CLAUDE.md` | This file. Permanent identity and rules. Does not change. |
+| `CONTEXT.md` | Task routing. Which files to load for a given task. |
+| `PRIMER.md` | Living session handoff. Rewrites at end of every session. |
+| `MEMORY.sh` | Injects live git context at launch. |
+| `LESSONS.md` | Domain lessons learned. Grows over time. |
+| `DESIGN.md` | Architecture decisions and rationale. |
+| `CHANGELOG.md` | Versioned change log. |
