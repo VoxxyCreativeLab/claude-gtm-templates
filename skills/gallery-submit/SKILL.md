@@ -1,6 +1,6 @@
 ---
 name: gallery-submit
-description: Prepare a GTM custom template for Community Template Gallery submission. Validates metadata.yaml, template structure, and Gallery requirements.
+description: Prepare a GTM custom template for Community Template Gallery submission. Validates metadata.yaml, template structure, and Gallery requirements. Use when submitting to the Gallery, preparing for publication, or checking Gallery readiness.
 disable-model-invocation: false
 ---
 
@@ -64,6 +64,8 @@ Run through each item and report pass/fail:
 ## After Validation
 
 If all checks pass, provide:
-1. The submission URL: https://github.com/nickreese/community-templates/blob/main/README.md
-2. Remind the user to verify the SHA in `metadata.yaml` matches the latest commit
-3. Remind them to test one final time in GTM Preview mode before submitting
+1. The submission URL: go to https://tagmanager.google.com/gallery/ and select **Submit Template**, then provide the GitHub repository URL
+2. Reference the [example community template repo](https://github.com/gtm-vendor-templates/example-community-template) for the expected file structure
+3. Remind the user to verify the SHA in `metadata.yaml` matches the latest commit on the default branch
+4. Remind them to test one final time in GTM Preview mode before submitting
+5. Ensure GitHub Issues are enabled on the repo (required for user feedback)

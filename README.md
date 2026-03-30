@@ -22,7 +22,7 @@ After installation, restart Claude Code. All skills are available in every sessi
 
 | Skill | Command | Description |
 |---|---|---|
-| Scaffold | `/gtm-template-builder-plugin:scaffold [name]` | Create a new GTM template project |
+| Scaffold | `/gtm-template-builder-plugin:scaffold-template [name]` | Create a new GTM template project |
 | Sandboxed JS | `/gtm-template-builder-plugin:sandboxed-js` | API reference and patterns |
 | Permissions | `/gtm-template-builder-plugin:permissions` | Generate/validate permission blocks |
 | Parameters | `/gtm-template-builder-plugin:parameters` | Template parameter types and UI |
@@ -34,7 +34,7 @@ After installation, restart Claude Code. All skills are available in every sessi
 ### 1. Scaffold a new project
 
 ```
-/gtm-template-builder-plugin:scaffold MyTracker
+/gtm-template-builder-plugin:scaffold-template MyTracker
 ```
 
 Walks you through a wizard: pick the third-party tool, event type, architecture, and events to track. Generates `template.tpl`, `metadata.yaml`, `CLAUDE.md`, and `README.md`.

@@ -33,3 +33,21 @@ When asked to **validate permissions**:
 - Permission type codes: `1` = String, `2` = List, `3` = Map, `8` = Boolean
 
 Consult [[permissions-reference]] for the exact JSON structure of each permission type.
+
+## Quick Example
+
+Code:
+```javascript
+const injectScript = require('injectScript');
+const setInWindow = require('setInWindow');
+const logToConsole = require('logToConsole');
+```
+
+Requires these permission blocks: `inject_script`, `access_globals` (with read+write for the window property), and `logging`. The `JSON`, `makeString`, `makeNumber`, and similar utility APIs do NOT need permissions.
+
+## Common Mistakes
+
+- **Missing `read: true` on `setInWindow` with `overrideExisting: true`** — GTM treats this as a readwrite operation; omitting read causes a silent runtime permission error
+- **Wildcard too broad in `inject_script`** — use `https://cdn.jsdelivr.net/gh/YourOrg/your-repo*` not `https://*`
+- **Forgetting `callInWindow` permission** — if your helper script sets a callback that sandboxed JS calls via `callInWindow`, you need an `access_globals` entry with `execute: true` for that function name
+- **Unused permissions left in** — GTM Gallery review flags permissions that don't match any `require()` call

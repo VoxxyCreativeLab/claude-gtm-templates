@@ -1,6 +1,6 @@
 ---
 name: scaffold-template
-description: Scaffold a new GTM custom template project with .tpl, metadata.yaml, CLAUDE.md, and README
+description: Scaffold a new GTM custom template project with .tpl, metadata.yaml, CLAUDE.md, and README. Use when starting a new template, creating a GTM tag project, or the user says "new template" or "scaffold".
 argument-hint: "[template-name]"
 disable-model-invocation: false
 ---
@@ -30,8 +30,8 @@ Use the skeleton from [[tpl-skeleton]]. Fill in:
 
 ### `metadata.yaml`
 ```yaml
-homepage: "https://github.com/VoxxyCreativeLab/template-[name]"
-documentation: "https://github.com/VoxxyCreativeLab/template-[name]/blob/main/README.md"
+homepage: "https://github.com/VoxxyCreativeLab/template-{{name}}"
+documentation: "https://github.com/VoxxyCreativeLab/template-{{name}}/blob/main/README.md"
 versions: []
 ```
 
@@ -61,3 +61,10 @@ MIT license with current year and "Voxxy Creative Lab" as copyright holder. Unle
 3. **Initialize git** in the project directory
 
 4. **Summarize** what was created and what the user should do next (fill in template logic, push to GitHub, test in GTM)
+
+## Error Handling
+
+- **Directory already exists:** Ask the user whether to overwrite, pick a different name, or abort. Never silently overwrite.
+- **Invalid template name:** The name must be lowercase alphanumeric with hyphens only (e.g., `calendly-tracking`). Reject names with spaces, underscores, or special characters and suggest a corrected version.
+- **No arguments provided:** If `$ARGUMENTS` is empty, ask the user for a template name before proceeding.
+- **Git init fails:** Warn the user and continue — the project files are still usable without git.

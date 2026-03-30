@@ -8,16 +8,16 @@ tags:
 
 # CLAUDE.md Template for GTM Template Projects
 
-Use this as the starting point for the project's `CLAUDE.md`. Fill in all `[PLACEHOLDER]` values.
+Use this as the starting point for the project's `CLAUDE.md`. Fill in all `{{placeholder}}` values.
 
 ```markdown
-# [Template Name] - GTM Custom Template
+# {{template-name}} - GTM Custom Template
 
 ## Project Overview
-A Google Tag Manager custom template (.tpl) that [what it does]. [Why it exists / what problem it solves].
+A Google Tag Manager custom template (.tpl) that {{what-it-does}}. {{why-it-exists}}.
 
 ## Repository
-https://github.com/VoxxyCreativeLab/template-[name]
+https://github.com/VoxxyCreativeLab/template-{{name}}
 
 ## File Structure
 \```
@@ -26,38 +26,38 @@ https://github.com/VoxxyCreativeLab/template-[name]
 ├── template.tpl           # GTM template file (sandboxed JS, UI, permissions, tests)
 ├── metadata.yaml          # Template gallery metadata and versioning
 ├── .gitignore             # Git ignore rules
-└── LICENSE                # [License type]
+└── LICENSE                # {{license-type}}
 \```
 
 ## Key Technical Details
 
 ### Architecture
-[Describe the architecture — does it use the injectScript pattern? Is logic entirely in sandboxed JS?]
+{{architecture-description}}
 
 ### GTM Sandboxed JS APIs Used
-[List the APIs: e.g., injectScript, setInWindow, logToConsole, sendPixel]
+{{api-list}}
 
 ### Events Tracked
-[List and describe the events this template tracks]
+{{events-description}}
 
 | Event | Description | Default |
 |---|---|---|
-| [event_name] | [What triggers it] | [ON/OFF] |
+| {{event-name}} | {{event-trigger}} | {{default-state}} |
 
 ### DataLayer Push Format
 \```javascript
 {
-  'event': '[event_name]',
-  '[detail_key]': '[detail_value]'
+  'event': '{{event-name}}',
+  '{{detail-key}}': '{{detail-value}}'
 }
 \```
 
 ### Permissions Required
-[List permissions and what they're for]
+{{permissions-list}}
 
 ## CDN Hosting (if using injectScript)
 If this template loads a helper script or config from jsDelivr CDN:
-- **Dedicated repo per product** — e.g. `VoxxyCreativeLab/cdn-[product-name]`. NEVER share a CDN repo with other products (jsDelivr has one flat version namespace per repo — tags collide).
+- **Dedicated repo per product** — e.g. `VoxxyCreativeLab/cdn-{{product-name}}`. NEVER share a CDN repo with other products (jsDelivr has one flat version namespace per repo — tags collide).
 - **Use `@v1` (major version)** in CDN URLs — auto-resolves to latest `v1.x.x` tag
 - **Always use `v` prefix** on tags: `v1.0.0`, `v1.1.0`, etc.
 - **Never delete+recreate tags** — jsDelivr caches permanently. Bump version instead.

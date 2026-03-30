@@ -27,3 +27,24 @@ Consult [[test-examples]] for test format, API reference, and common patterns.
 - Asserting on `gtmOnSuccess` before it could have been called
 - Using incorrect mock data key names (must match `name` in `___TEMPLATE_PARAMETERS___`)
 - **Using `//` comments between test scenarios** — the `___TESTS___` section is YAML, not JavaScript. Lines like `// @marker:value` at root indentation become YAML mapping keys, breaking the `scenarios:` list and causing "Error importing file". Use `# comment` (YAML comment) for anything outside `code: |-` blocks
+
+## Quick Example
+
+```yaml
+scenarios:
+- name: Tag fires successfully with default config
+  code: |-
+    mock('injectScript', function(url, onSuccess, onFailure) {
+      onSuccess();
+    });
+
+    const mockData = {
+      dataLayerEventName: 'my_event',
+      enableDebugLogging: false
+    };
+
+    runCode(mockData);
+    assertApi('gtmOnSuccess').wasCalled();
+```
+
+Key points: mock `injectScript` first, call `onSuccess()` inside the mock, then `runCode(data)`, then assert. See [[test-examples]] for more patterns.

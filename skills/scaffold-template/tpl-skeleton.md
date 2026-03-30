@@ -8,7 +8,7 @@ tags:
 
 # GTM Template Skeleton (.tpl)
 
-Use this skeleton when scaffolding a new GTM custom template. Replace all `[PLACEHOLDER]` values.
+Use this skeleton when scaffolding a new GTM custom template. Replace all `{{placeholder}}` values.
 
 ```
 ___INFO___
@@ -18,16 +18,16 @@ ___INFO___
   "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
-  "displayName": "[Template Display Name]",
+  "displayName": "{{template-display-name}}",
   "categories": [
-    "[CATEGORY1]"
+    "{{category}}"
   ],
   "brand": {
     "id": "brand_dummy",
     "displayName": "Voxxy Creative Lab",
     "thumbnail": ""
   },
-  "description": "[Brief description of what this template does]",
+  "description": "{{template-description}}",
   "containerContexts": [
     "WEB"
   ]
@@ -40,7 +40,7 @@ ___TEMPLATE_PARAMETERS___
   {
     "type": "LABEL",
     "name": "description",
-    "displayName": "[Description text shown at top of template configuration]"
+    "displayName": "{{description-text}}"
   },
   {
     "type": "GROUP",
@@ -53,8 +53,8 @@ ___TEMPLATE_PARAMETERS___
         "name": "dataLayerEventName",
         "displayName": "DataLayer Event Name",
         "simpleValueType": true,
-        "defaultValue": "[default_event_name]",
-        "help": "The event name pushed to the dataLayer. Default: '[default_event_name]'.",
+        "defaultValue": "{{default-event-name}}",
+        "help": "The event name pushed to the dataLayer. Default: '{{default-event-name}}'.",
         "valueValidators": [
           {
             "type": "NON_EMPTY"
@@ -88,11 +88,11 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 const logToConsole = require('logToConsole');
 
 // Read template parameter values
-const dataLayerEventName = data.dataLayerEventName || '[default_event_name]';
+const dataLayerEventName = data.dataLayerEventName || '{{default-event-name}}';
 
 // Debug logging helper
 if (data.enableDebugLogging) {
-  logToConsole('[TemplateName] Initializing with event name: ' + dataLayerEventName);
+  logToConsole('{{template-name}} Initializing with event name: ' + dataLayerEventName);
 }
 
 // TODO: Implement template logic
@@ -134,7 +134,7 @@ scenarios:
 - name: Basic test - tag executes successfully
   code: |-
     const mockData = {
-      dataLayerEventName: '[default_event_name]',
+      dataLayerEventName: '{{default-event-name}}',
       enableDebugLogging: false
     };
 
@@ -144,7 +144,7 @@ scenarios:
 
 ___NOTES___
 
-Created on [DATE] by Voxxy Creative Lab.
+Created on {{date}} by Voxxy Creative Lab.
 ```
 
 ## Valid Categories

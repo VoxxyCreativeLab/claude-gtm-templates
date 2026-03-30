@@ -20,3 +20,45 @@ Consult [[parameter-types]] for the complete reference of all parameter types, p
 6. **No redundant labels** — Don't add LABEL params inside GROUPs; the GROUP `displayName` is the section header.
 7. **Sentence case** — All `displayName` and `checkboxText` values must use sentence case (capitalize first word only, except proper nouns).
 8. **Match parameter names to code** — The `name` field becomes `data.paramName` in sandboxed JS.
+
+## Quick Example
+
+A well-structured parameter section for a tracking template:
+
+```json
+[
+  {
+    "type": "TEXT",
+    "name": "dataLayerEventName",
+    "displayName": "DataLayer event name",
+    "simpleValueType": true,
+    "defaultValue": "my_event",
+    "help": "The event name pushed to the dataLayer when tracking fires.",
+    "valueValidators": [{ "type": "NON_EMPTY" }]
+  },
+  {
+    "type": "GROUP",
+    "name": "eventSettings",
+    "displayName": "Event settings",
+    "groupStyle": "ZIPPY_OPEN",
+    "subParams": [
+      {
+        "type": "CHECKBOX",
+        "name": "trackClicks",
+        "checkboxText": "Track click events",
+        "simpleValueType": true,
+        "defaultValue": true
+      }
+    ]
+  }
+]
+```
+
+Global config (`dataLayerEventName`) is at top level. Related toggles are grouped. Sentence case throughout.
+
+## Common Mistakes
+
+- **LABEL inside a GROUP** — the GROUP `displayName` is already the section header; adding a LABEL is redundant
+- **Missing `valueValidators`** — required TEXT fields without `NON_EMPTY` let users save blank values, causing silent failures
+- **`ZIPPY_OPEN` for advanced settings** — use `ZIPPY_CLOSED` for optional/advanced groups so they don't clutter the UI
+- **camelCase in `displayName`** — use sentence case ("Track click events", not "Track Click Events")
